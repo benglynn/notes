@@ -1,6 +1,12 @@
-export const createGenerator = (
-  context: AudioContext = new window.AudioContext()
-) => {
+declare global {
+  interface Window {
+    webkitAudioContext: AudioContext | undefined;
+  }
+}
+
+export const createGenerator = () => {
+  if ((window.AudioContext || window.webkitAudioContext) === undefined) return;
+  const context = new (window.AudioContext || window.webkitAudioContext)();
   const boop = (startTime = context.currentTime, frequency = 440) => {
     const duration = 1;
     const attack = 0.001;
