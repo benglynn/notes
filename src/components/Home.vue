@@ -1,16 +1,17 @@
 <template>
   <h1>notes 🎵</h1>
-  <button @click="play">Charm</button>
+  <button @click="charm">Charm</button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { createGenerator } from "../audio/audio";
+import createPlayer from "../sounds/player";
 export default defineComponent({
   name: "Home",
   setup: () => {
-    const play = () => createGenerator().charm();
-    return { play };
+    const player = createPlayer();
+    const charm = () => player.charm();
+    return { charm };
   },
 });
 </script>
