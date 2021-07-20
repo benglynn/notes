@@ -4,4 +4,4 @@
 npm run dev # dev-server on localhost:3000
 ```
 
-Experimenting with the web audio API. 
+Experimenting with the web audio and MIDI APIs. 
