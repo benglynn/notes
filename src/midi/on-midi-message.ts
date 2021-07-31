@@ -1,11 +1,13 @@
+import { dispatch } from "./bus";
+
 const onMidiMessage: (e: WebMidi.MIDIMessageEvent) => void = (e) => {
-  const [command, note, velocity] = e.data;
+  const [command, noteNumber, velocity] = e.data;
   switch (command) {
     case 144:
-      console.log("noteOn", note);
+      dispatch({ type: "noteOn", noteNumber });
       break;
     case 128:
-      console.log("noteOff", note);
+      dispatch({ type: "noteOff", noteNumber });
       break;
   }
 };
